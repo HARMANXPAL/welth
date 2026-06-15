@@ -63,3 +63,16 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.hero-image-wrapper {
+  perspective: 1000px;
+}
+
+.hero-image {
+  transform: rotateX(10deg) translateY(-30px);
+  transform-origin: bottom;
+  transition: transform 0.5s ease-out;
+}
+
+.hero-image.scrolled {
+  transform: rotateX(0deg) translateY(0px);
+}

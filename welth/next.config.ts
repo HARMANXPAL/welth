@@ -1,9 +1,8 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ["@prisma/client"],
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ["randomuser.me"],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
