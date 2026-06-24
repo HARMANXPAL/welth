@@ -1,6 +1,6 @@
 import { getAccountWithTransactions } from "@/actions/accounts";
 import { notFound } from "next/navigation";
-import { TransactionTable } from "@/components/transaction-table";
+import { TransactionTable } from "../_components/transaction-table";
 import { AccountChart } from "../_components/account-chart";
 
 const AccountPage = async ({ params }) => {
@@ -32,10 +32,7 @@ const AccountPage = async ({ params }) => {
         </div>
       </div>
 
-      {/* Chart */}
       <AccountChart transactions={transactions} />
-
-      {/* Transaction Table */}
       <TransactionTable transactions={transactions} />
     </div>
   );
