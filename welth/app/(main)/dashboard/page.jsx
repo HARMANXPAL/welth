@@ -4,6 +4,7 @@ import { CreateAccountDrawer } from "@/components/create-account-drawer";
 import { BudgetProgress } from "@/components/budget-progress";
 import { AccountCard } from "./_components/account-card";
 import { DashboardOverview } from "./_components/transaction-overview";
+import { SeedButton } from "./_components/seed-button";
 import { Plus } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { db } from "@/lib/prisma";
@@ -38,7 +39,12 @@ const DashboardPage = async () => {
 
   return (
     <div className="px-5 pt-24 space-y-8">
-      <h1 className="text-6xl font-bold gradient-title">Dashboard</h1>
+
+      {/* Header with Seed Button */}
+      <div className="flex items-center justify-between">
+        <h1 className="text-6xl font-bold gradient-title">Dashboard</h1>
+        <SeedButton />
+      </div>
 
       {/* Budget Progress */}
       {defaultAccount && (
@@ -55,10 +61,6 @@ const DashboardPage = async () => {
 
       {/* Account Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {accounts.map((account) => (
-          <AccountCard key={account.id} account={account} />
-        ))}
-
         <CreateAccountDrawer>
           <Card className="hover:shadow-md transition-shadow cursor-pointer border-dashed">
             <CardContent className="flex flex-col items-center justify-center h-full pt-5 text-muted-foreground">
@@ -67,6 +69,9 @@ const DashboardPage = async () => {
             </CardContent>
           </Card>
         </CreateAccountDrawer>
+        {accounts.map((account) => (
+          <AccountCard key={account.id} account={account} />
+        ))}
       </div>
     </div>
   );
