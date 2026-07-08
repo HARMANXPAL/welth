@@ -38,8 +38,7 @@ const DashboardPage = async () => {
   }
 
   return (
-    <div className="px-5 pt-24 space-y-8">
-
+    <div className="space-y-8">
       {/* Header with Seed Button */}
       <div className="flex items-center justify-between">
         <h1 className="text-6xl font-bold gradient-title">Dashboard</h1>

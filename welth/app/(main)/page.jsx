@@ -1,13 +1,19 @@
 import HeroSection from "@/components/hero";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { featuresData, howItWorksData, statsData, testimonialsData } from "@/data/landing";
 import Link from "next/link";
+import {
+  featuresData,
+  howItWorksData,
+  statsData,
+  testimonialsData,
+} from "@/data/landing";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Hero Section */}
       <HeroSection />
 
       {/* Stats Section */}
@@ -46,7 +52,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* How It Works Section */}
       <section className="py-20 bg-blue-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-16">
@@ -56,7 +62,9 @@ export default function Home() {
             {howItWorksData.map((step, index) => (
               <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <div className="text-blue-600">{step.icon}</div>
+                  <div className="text-blue-600 font-bold text-xl">
+                    {step.icon}
+                  </div>
                 </div>
                 <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
                 <p className="text-gray-600">{step.description}</p>
@@ -66,7 +74,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Testimonials Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
@@ -108,7 +116,10 @@ export default function Home() {
             smarter with Welth.
           </p>
           <Link href="/dashboard">
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 px-8 animate-bounce">
+            <Button
+              size="lg"
+              className="bg-white text-blue-600 hover:bg-blue-50 px-8 animate-bounce"
+            >
               Start Free Today
             </Button>
           </Link>

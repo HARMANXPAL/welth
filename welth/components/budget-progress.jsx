@@ -53,11 +53,18 @@ export function BudgetProgress({ initialBudget, currentExpenses }) {
     await updateBudgetFn(amount);
   };
 
+  const handleCancel = () => {
+    setNewBudget(initialBudget?.amount?.toString() || "");
+    setIsEditing(false);
+  };
+
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <div className="flex-1">
-          <CardTitle className="text-sm font-medium">Monthly Budget</CardTitle>
+          <CardTitle className="text-sm font-medium">
+            Monthly Budget (Default Account)
+          </CardTitle>
           <div className="flex items-center gap-2 mt-1">
             {isEditing ? (
               <div className="flex items-center gap-2">
@@ -68,6 +75,7 @@ export function BudgetProgress({ initialBudget, currentExpenses }) {
                   className="w-32 h-7 text-sm"
                   placeholder="Enter amount"
                   autoFocus
+                  disabled={isLoading}
                 />
                 <Button
                   variant="ghost"
@@ -81,7 +89,8 @@ export function BudgetProgress({ initialBudget, currentExpenses }) {
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => setIsEditing(false)}
+                  onClick={handleCancel}
+                  disabled={isLoading}
                   className="h-7 w-7"
                 >
                   <X className="h-4 w-4 text-red-500" />
@@ -110,16 +119,16 @@ export function BudgetProgress({ initialBudget, currentExpenses }) {
       <CardContent>
         {initialBudget && (
           <div className="space-y-2">
-           <Progress
-  value={percentageUsed}
-  className={`${
-    percentageUsed >= 90
-      ? "[&>div]:bg-red-500"
-      : percentageUsed >= 75
-      ? "[&>div]:bg-yellow-500"
-      : "[&>div]:bg-green-500"
-  }`}
-/>
+            <Progress
+              value={percentageUsed}
+              indicatorClassName={
+                percentageUsed >= 90
+                  ? "bg-red-500"
+                  : percentageUsed >= 75
+                  ? "bg-yellow-500"
+                  : "bg-green-500"
+              }
+            />
             <p className="text-xs text-muted-foreground text-right">
               {percentageUsed.toFixed(1)}% used
             </p>
